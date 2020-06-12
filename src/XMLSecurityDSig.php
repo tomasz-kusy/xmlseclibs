@@ -6,6 +6,7 @@ use DOMElement;
 use DOMNode;
 use DOMXPath;
 use Exception;
+use RobRichards\XMLSecLibs\Utils\Convert;
 use RobRichards\XMLSecLibs\Utils\XPath as XPath;
 
 /**
@@ -1077,7 +1078,9 @@ class XMLSecurityDSig
 
                         $x509Node = $baseDoc->createElementNS(self::XMLDSIGNS, $dsig_pfx.'X509IssuerName', $issuerName);
                         $x509IssuerNode->appendChild($x509Node);
-                        $x509Node = $baseDoc->createElementNS(self::XMLDSIGNS, $dsig_pfx.'X509SerialNumber', $certData['serialNumber']);
+                        $x509Node = $baseDoc->createElementNS(self::XMLDSIGNS, $dsig_pfx.'X509SerialNumber',
+                            $certData['serialNumberHex'] ? Convert::hex2dec($certData['serialNumberHex']) : $certData['serialNumber']
+                        );
                         $x509IssuerNode->appendChild($x509Node);
                     }
                 }

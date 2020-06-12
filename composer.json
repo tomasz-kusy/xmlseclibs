@@ -16,7 +16,8 @@
   },
   "require": {
     "php": ">= 5.4",
-    "ext-openssl": "*"
+    "ext-openssl": "*",
+    "ext-bcmath": "*"
   },
   "replace": {
     "robrichards/xmlseclibs": "3.1.0"
