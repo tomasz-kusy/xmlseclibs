@@ -1079,7 +1079,7 @@ class XMLSecurityDSig
                         $x509Node = $baseDoc->createElementNS(self::XMLDSIGNS, $dsig_pfx.'X509IssuerName', $issuerName);
                         $x509IssuerNode->appendChild($x509Node);
                         $x509Node = $baseDoc->createElementNS(self::XMLDSIGNS, $dsig_pfx.'X509SerialNumber',
-                            $certData['serialNumberHex'] ? Convert::hex2dec($certData['serialNumberHex']) : $certData['serialNumber']
+                            !empty($certData['serialNumberHex']) ? Convert::hex2dec($certData['serialNumberHex']) : $certData['serialNumber']
                         );
                         $x509IssuerNode->appendChild($x509Node);
                     }
